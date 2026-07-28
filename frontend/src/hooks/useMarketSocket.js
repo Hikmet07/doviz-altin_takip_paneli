@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { normalizePriceRecord } from "../services/api";
 
 const SOCKET_URL =
-  import.meta.env.VITE_SOCKET_URL || "ws://localhost:8080/ws";
+  import.meta.env.VITE_SOCKET_URL || "wss://doviz-altin-takip-paneli.onrender.com/ws";
 
 function useMarketSocket() {
   const socketRef = useRef(null);

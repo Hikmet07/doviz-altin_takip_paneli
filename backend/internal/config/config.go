@@ -33,7 +33,7 @@ func Load() *Config {
 		DBPath:               getEnv("DB_PATH", "./data/market.db"),
 		FetchInterval:        getEnvAsDuration("FETCH_INTERVAL", 30*time.Second),
 		CleanupRetentionDays: getEnvAsInt("CLEANUP_RETENTION_DAYS", 30),
-		CORSOrigins:          strings.Split(getEnv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000"), ","),
+		CORSOrigins:          strings.Split(getEnv("CORS_ORIGINS", "*"), ","),
 	}
 
 	return cfg
