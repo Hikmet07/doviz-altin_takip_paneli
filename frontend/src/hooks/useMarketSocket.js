@@ -119,14 +119,15 @@ function useMarketSocket() {
           }
         };
 
-        socket.onerror = () => {
-          setSocketStatus("error");
-          setStatusText("Bağlantı Hatası");
+        socket.onerror = (err) => {
+          console.warn("WebSocket bağlantı uyarısı:", err);
+          setSocketStatus("connecting");
+          setStatusText("Yeniden Bağlanılıyor...");
         };
 
         socket.onclose = () => {
-          setSocketStatus("disconnected");
-          setStatusText("Bağlantı kapandı, 3s sonra tekrar deneniyor...");
+          setSocketStatus("connecting");
+          setStatusText("Yeniden Bağlanılıyor...");
 
           reconnectTimerRef.current = setTimeout(() => {
             connect();
@@ -134,8 +135,8 @@ function useMarketSocket() {
         };
       } catch (err) {
         console.error("WebSocket kurulum hatası:", err);
-        setSocketStatus("error");
-        setStatusText("Bağlantı Hatası");
+        setSocketStatus("connecting");
+        setStatusText("Yeniden Bağlanılıyor...");
       }
     }
 
