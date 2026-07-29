@@ -29,7 +29,7 @@ func Load() *Config {
 	}
 
 	cfg := &Config{
-		ServerPort:           getEnv("SERVER_PORT", "8080"),
+		ServerPort:           getEnv("PORT", getEnv("SERVER_PORT", "8080")),
 		DBPath:               getEnv("DB_PATH", "./data/market.db"),
 		FetchInterval:        getEnvAsDuration("FETCH_INTERVAL", 30*time.Second),
 		CleanupRetentionDays: getEnvAsInt("CLEANUP_RETENTION_DAYS", 30),
