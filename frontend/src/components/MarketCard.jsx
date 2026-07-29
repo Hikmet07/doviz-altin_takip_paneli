@@ -2,14 +2,26 @@ function MarketCard({ title, symbol, buyPrice, sellPrice, changePercent, trend, 
   const isUp = trend === "up" || Number(changePercent) > 0;
   const isDown = trend === "down" || Number(changePercent) < 0;
 
+  // Map API codes to clean human-readable badge titles (e.g., PC -> ÇEYREK)
+  const displaySymbol = symbol === "PC" ? "ÇEYREK ALTIN" : symbol;
+
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all hover:shadow-md hover:-translate-y-0.5">
+    <div
+      className="notranslate relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all hover:shadow-md hover:-translate-y-0.5"
+      translate="no"
+    >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-            {symbol}
+          <span
+            className="notranslate text-xs font-bold uppercase tracking-wider text-slate-400"
+            translate="no"
+          >
+            {displaySymbol}
           </span>
-          <h3 className="text-base font-bold text-slate-900 leading-tight">
+          <h3
+            className="notranslate text-base font-bold text-slate-900 leading-tight mt-0.5"
+            translate="no"
+          >
             {title}
           </h3>
         </div>
