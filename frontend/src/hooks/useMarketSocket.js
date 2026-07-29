@@ -7,7 +7,6 @@ function getSocketUrl() {
     "wss://doviz-altin-takip-paneli.onrender.com/ws";
   url = url.trim();
 
-  // Fix protocol if malformed
   if (url.startsWith("wshttp://")) {
     url = url.replace(/^wshttp:\/\//, "ws://");
   } else if (url.startsWith("wshttps://")) {
@@ -20,7 +19,6 @@ function getSocketUrl() {
     url = "wss://" + url;
   }
 
-  // Normalize duplicate slashes
   url = url.replace(/([^:]\/)\/+/g, "$1");
 
   if (!url.endsWith("/ws")) {
@@ -36,7 +34,7 @@ function useMarketSocket() {
   const previousPricesRef = useRef(new Map());
 
   const [liveData, setLiveData] = useState([]);
-  const [socketStatus, setSocketStatus] = useState("connecting"); // "connected", "connecting", "error", "disconnected"
+  const [socketStatus, setSocketStatus] = useState("connecting");
   const [statusText, setStatusText] = useState("Bağlanıyor...");
   const [lastUpdate, setLastUpdate] = useState(null);
 

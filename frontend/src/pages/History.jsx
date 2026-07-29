@@ -23,7 +23,6 @@ function History() {
         setSymbols(symbolList);
 
         if (symbolList.length > 0) {
-          // Default to USD or first symbol
           const defaultSym = symbolList.find((s) => s.symbol === "USD") || symbolList[0];
           setSelectedSymbol(defaultSym.symbol);
         }
@@ -74,7 +73,6 @@ function History() {
 
   return (
     <div className="space-y-6">
-      {/* Header Banner */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between rounded-2xl bg-white p-6 border border-slate-200 shadow-xs">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
@@ -85,7 +83,6 @@ function History() {
           </p>
         </div>
 
-        {/* Range Selector Buttons */}
         <div className="inline-flex rounded-xl bg-slate-100 p-1 text-xs font-semibold text-slate-600">
           {[
             { id: "1d", label: "Son 1 Gün" },
@@ -107,7 +104,6 @@ function History() {
         </div>
       </div>
 
-      {/* Control Bar */}
       <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-end">
           <div className="md:col-span-2">
@@ -145,7 +141,6 @@ function History() {
 
       {errorMessage && <ErrorMessage message={errorMessage} />}
 
-      {/* Chart Display */}
       <div>
         {historyLoading ? (
           <Loading text="Grafik verisi yükleniyor..." />

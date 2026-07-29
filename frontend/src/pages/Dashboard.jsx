@@ -38,7 +38,6 @@ function Dashboard() {
     }
   }, [liveData]);
 
-  // Pick top benchmark instruments for featured cards
   const benchmarkSymbols = ["USD", "EUR", "GA", "PC"];
   const featuredMarkets = benchmarkSymbols
     .map((sym) => markets.find((m) => m.symbol === sym))
@@ -57,7 +56,6 @@ function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Header Banner */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between rounded-2xl bg-white p-6 border border-slate-200 shadow-xs">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
@@ -90,7 +88,6 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Featured Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {fallbackMarkets.map((market) => (
           <MarketCard
@@ -106,7 +103,6 @@ function Dashboard() {
         ))}
       </div>
 
-      {/* Main Table */}
       <MarketTable markets={markets} />
     </div>
   );

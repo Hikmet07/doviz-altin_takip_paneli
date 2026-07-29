@@ -17,7 +17,7 @@ export function normalizePriceRecord(record) {
     id: record.id,
     symbol: record.kod,
     name: record.aciklama ? record.aciklama.trim() : record.kod,
-    type: record.kategori, // "currency" or "gold"
+    type: record.kategori,
     typeLabel: record.kategori === "currency" ? "Döviz" : record.kategori === "gold" ? "Altın" : "Diğer",
     buyPrice: Number(record.alis) || 0,
     sellPrice: Number(record.satis) || 0,

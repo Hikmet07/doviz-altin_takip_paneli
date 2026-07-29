@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function MarketTable({ markets }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeTab, setActiveTab] = useState("all"); // "all", "currency", "gold"
+  const [activeTab, setActiveTab] = useState("all");
 
   const filteredMarkets = markets.filter((market) => {
     const matchesTab =
@@ -17,7 +17,6 @@ function MarketTable({ markets }) {
 
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      {/* Header & Controls */}
       <div className="border-b border-slate-100 p-5">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
@@ -30,9 +29,7 @@ function MarketTable({ markets }) {
             </p>
           </div>
 
-          {/* Search & Filters */}
           <div className="flex flex-wrap items-center gap-3">
-            {/* Category Tabs */}
             <div className="inline-flex rounded-xl bg-slate-100 p-1 text-xs font-semibold text-slate-600">
               <button
                 onClick={() => setActiveTab("all")}
@@ -66,7 +63,6 @@ function MarketTable({ markets }) {
               </button>
             </div>
 
-            {/* Search Input */}
             <div className="relative">
               <input
                 type="text"
@@ -88,7 +84,6 @@ function MarketTable({ markets }) {
         </div>
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -155,7 +150,6 @@ function MarketTable({ markets }) {
                       ₺
                     </td>
 
-                    {/* ANLIK DEĞİŞİM SÜTUNU (Son canlı tik hareketi) */}
                     <td className="px-5 py-3.5 text-right font-semibold tabular-nums">
                       <span
                         className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-bold transition-all ${
@@ -172,7 +166,6 @@ function MarketTable({ markets }) {
                       </span>
                     </td>
 
-                    {/* GÜNLÜK FARK SÜTUNU */}
                     <td
                       className={`px-5 py-3.5 text-right font-semibold tabular-nums text-xs ${
                         isUp
@@ -190,7 +183,6 @@ function MarketTable({ markets }) {
                       ₺
                     </td>
 
-                    {/* GÜNLÜK DEĞİŞİM SÜTUNU (% Sabah açılışına göre) */}
                     <td className="px-5 py-3.5 text-right font-semibold tabular-nums">
                       <span
                         className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold ${

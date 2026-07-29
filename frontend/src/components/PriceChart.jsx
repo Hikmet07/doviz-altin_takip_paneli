@@ -9,17 +9,13 @@ import {
   Legend,
 } from "recharts";
 
-// Data Downsampling for Range (30d, 7d, 1d)
-// Ensures 30-day view spreads points EQUALLY across all 30 days (1 point per day)
 function downsampleData(data, range) {
   if (!Array.isArray(data) || data.length === 0) return [];
 
   if (range === "1d") {
-    // 1-day view: return all intraday points
     return data;
   }
 
-  // Group by Calendar Day (YYYY-MM-DD)
   const dayGroups = new Map();
 
   data.forEach((item) => {
@@ -36,11 +32,8 @@ function downsampleData(data, range) {
 
   dayGroups.forEach((dayItems) => {
     if (range === "30d") {
-      // 30-day view: Pick exactly 1 representative closing point per day
-      // This guarantees each day gets EQUAL width across the chart X-axis!
       sampled.push(dayItems[dayItems.length - 1]);
     } else if (range === "7d") {
-      // 7-day view: Pick up to 2 representative points per day
       if (dayItems.length <= 2) {
         sampled.push(...dayItems);
       } else {
@@ -55,10 +48,8 @@ function downsampleData(data, range) {
 }
 
 function PriceChart({ data, range = "30d", title = "Fiyat Grafiği" }) {
-  // Downsample data according to selected range
   const sampledData = downsampleData(data, range);
 
-  // Format data for Recharts
   const formattedData = sampledData.map((item, index) => {
     const d = item.createdAt ? new Date(item.createdAt) : new Date();
 
